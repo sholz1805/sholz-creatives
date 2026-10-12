@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { MailOpen, MapPin, PhoneCall } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
-const ContactForm = () => {
+const ContactFormContent = () => {
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitState, setSubmitState] = useState({
@@ -296,4 +296,19 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default function ContactForm() {
+  return (
+    <Suspense
+      fallback={
+        <div className="brand-gradient min-h-screen px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl animate-pulse">
+            <div className="mx-auto mb-10 h-10 max-w-md rounded-lg bg-white/10" />
+            <div className="h-96 rounded-[32px] bg-white/5" />
+          </div>
+        </div>
+      }
+    >
+      <ContactFormContent />
+    </Suspense>
+  );
+}

@@ -88,14 +88,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav
-      ref={navRef}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-brand-deep/95 backdrop-blur-xl"
-          : "bg-brand-deep/90 backdrop-blur-lg"
-      }`}
-    >
+ 
+<nav
+  ref={navRef}
+  className={`fixed inset-x-0 top-0 z-50 border-none outline-none transition-all duration-300 ${
+    isScrolled
+      ? "bg-brand-deep/95 backdrop-blur-xl"
+      : "bg-brand-deep/90 backdrop-blur-lg"
+  }`}
+>
+
       {/* Main Navbar */}
       <div className="mx-auto flex h-[64px] max-w-6xl items-center justify-between px-4 sm:px-6 md:h-[72px] md:px-8">
         {/* Logo */}

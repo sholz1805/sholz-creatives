@@ -1,26 +1,175 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand balance: 60% neutral canvas, 30% navy, 10% purple/lilac accents. */
+  --brand-canvas: #edf1fd;
+  --brand-surface: #ffffff;
+  --brand-deep: #050615;
+  --brand-navy: #2c2e5f;
+  --brand-ink: #1c1e3d;
+  --brand-purple: #8b42f1;
+  --brand-lilac: #cc66ff;
+  --brand-muted: #68708a;
+  --background: var(--brand-canvas);
+  --foreground: var(--brand-ink);
+  --color-primary: var(--brand-navy);
+  --color-secondary: var(--brand-purple);
+  --color-accent: var(--brand-lilac);
+  --color-background: var(--brand-canvas);
+  --color-surface: var(--brand-surface);
+  --color-ink: var(--brand-ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand-canvas: var(--brand-canvas);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-lilac: var(--brand-lilac);
+  --color-brand-muted: var(--brand-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --text-xs: 0.75rem;
+  --text-xs--line-height: calc(1 / 0.75);
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: calc(1.25 / 0.8125);
+  --text-base: 0.9375rem;
+  --text-base--line-height: calc(1.5 / 0.9375);
+  --text-lg: 1.0625rem;
+  --text-lg--line-height: calc(1.75 / 1.0625);
+  --text-xl: 1.1875rem;
+  --text-xl--line-height: calc(1.75 / 1.1875);
+  --text-2xl: 1.375rem;
+  --text-2xl--line-height: calc(2 / 1.375);
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: calc(2.25 / 1.75);
+  --text-4xl: 2.125rem;
+  --text-4xl--line-height: calc(2.5 / 2.125);
+  --text-5xl: 2.75rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 3.25rem;
+  --text-6xl--line-height: 1;
+  --text-7xl: 3.75rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 5rem;
+  --text-8xl--line-height: 1;
+  --text-9xl: 6.5rem;
+  --text-9xl--line-height: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(44, 46, 95, 0.07), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(139, 66, 241, 0.05), transparent 30%),
+    var(--brand-canvas);
+  color: var(--brand-ink);
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.brand-gradient {
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(139, 66, 241, 0.18), transparent 34%),
+    radial-gradient(circle at 88% 100%, rgba(102, 84, 194, 0.16), transparent 36%),
+    linear-gradient(135deg, #050615 0%, #08091d 52%, #11112b 100%);
+}
+
+.hero-brand-gradient {
+  background-image:
+    radial-gradient(circle at 10% 15%, rgba(139, 66, 241, 0.2), transparent 24%),
+    radial-gradient(circle at 85% 80%, rgba(102, 84, 194, 0.16), transparent 32%),
+    linear-gradient(135deg, #050615 0%, #08091d 48%, #101126 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: rgba(139, 66, 241, 0.25);
+  color: #0f172a;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+button,
+a {
+  transition: all 0.2s ease;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll linear infinite;
+  animation-duration: 30s;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 24s linear infinite;
+}
+
+@keyframes marquee-vertical {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical 18s linear infinite;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 1s ease-out;
 }
